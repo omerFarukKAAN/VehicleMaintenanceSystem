@@ -1,0 +1,42 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Show Vehicle Page";
+}
+<div style="width:100%; display:flex; align-items:center; justify-content:space-between;">
+    <a type="submit" class="btn btn-primary" asp-controller="Vehicle" asp-action="AddVehicle" style="margin:10px">Add Vehicle</a>
+
+    <form asp-controller="Vehicle" asp-action="FilterVehicle" id="vehicle">
+        <div class="form-group" style="display:flex; align-items:center;">
+            <input placeholder="Vehicle Type" style="margin-right:4px;" type="text" name="vType" />
+            <input type="submit" class="btn btn-outline-primary btn-sm" value="Filter" />
+        </div>
+    </form>
+</div>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Type</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
+                <th scope="col">License Plate</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Vehicle v in Model.Vehicles)
+            {
+                <tr>
+                    <td scope="row">@v.VehicleId</td>
+                    <td>@v.Type</td>
+                    <td>@v.Brand</td>
+                    <td>@v.Model</td>
+                    <td>@v.LicensePlate</td>
+                    <td><a asp-controller="Vehicle" asp-action="VehicleDetails" asp-route-vId=@v.VehicleId>Details</a></td>
+                    <td><a asp-controller="Vehicle" asp-action="DeleteVehicle" asp-route-vId=@v.VehicleId>Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>

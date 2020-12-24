@@ -1,0 +1,21 @@
+﻿@model Maintenance
+@{
+    ViewData["Title"] = "Maintenance Details Page";
+}
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Done</th>
+            <th scope="col">Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">@Model.MaintenanceId</td>
+            <td>@Model.Done</td>
+            <td>@Model.Note</td>
+        </tr>
+    </tbody>
+</table>

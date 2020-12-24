@@ -1,0 +1,87 @@
+﻿@model Vehicle
+@{
+    ViewData["Title"] = "Vehicle Details Page";
+    var sum = 0;
+    foreach(Maintenance m in Model.Maintenances)
+    {
+        sum += m.Cost;
+    }
+}
+
+<a type="submit" class="btn btn-primary" asp-controller="Vehicle" asp-action="AddMaintenance" asp-route-vId="@Model.VehicleId" style="margin:10px">Add Maintenance</a>
+<a type="submit" class="btn btn-primary" asp-controller="Vehicle" asp-action="EditVehicle" asp-route-vId="@Model.VehicleId" style="margin:10px">Edit Vehicle</a>
+<a type="submit" class="btn btn-primary" asp-controller="Vehicle" asp-action="ShowVehicle" style="margin:10px">Back To My Vehicles</a>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Type</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Model</th>
+            <th scope="col">License Plate</th>
+            <th scope="col">Transmission</th>
+            <th scope="col">Color</th>
+            <th scope="col">Fuel Type</th>
+            <th scope="col">Year</th>
+            <th scope="col">Horsepower</th>
+            <th scope="col">Engine Capacity</th>
+            <th scope="col">Kilometer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">@Model.VehicleId</td>
+            <td>@Model.Type</td>
+            <td>@Model.Brand</td>
+            <td>@Model.Model</td>
+            <td>@Model.LicensePlate</td>
+            <td>@Model.Transmission</td>
+            <td>@Model.Color</td>
+            <td>@Model.FuelType</td>
+            <td>@Model.Year</td>
+            <td>@Model.Horsepower</td>
+            <td>@Model.EngineCapacity</td>
+            <td>@Model.Kilometer</td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Maintenance KM</th>
+            <th scope="col">Next Maintenance KM</th>
+            <th scope="col">Next Maintenance Date</th>
+            <th scope="col">Cost</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Maintenance m in Model.Maintenances)
+        {
+            <tr>
+                <td scope="row">@m.MaintenanceId</td>
+                <td>@m.Date</td>
+                <td>@m.MaintenanceKilometer</td>
+                <td>@m.NextMaintenanceKilometer</td>
+                <td>@m.NextMaintenanceDate</td>
+                <td>@m.Cost</td>
+                <td><a asp-controller="Vehicle" asp-action="MaintenanceDetails" asp-route-mId=@m.MaintenanceId>Details</a></td>
+                <td><a asp-controller="Vehicle" asp-action="DeleteMaintenance" asp-route-mId=@m.MaintenanceId>Delete</a></td>
+            </tr>
+        }
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td> @sum </td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>

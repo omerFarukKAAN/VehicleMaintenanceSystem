@@ -1,0 +1,65 @@
+﻿@model Vehicle
+@{
+    ViewData["Title"] = "Edit Vehicle Page";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Vehicle" asp-action="EditVehicle" asp-route-vId="@Model.VehicleId" id="vehicle" method="post">
+            <h4>Enter vehicle informations.</h4>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Type"></label>
+                <input disabled value="@Model.Type" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Brand"></label>
+                <input disabled value="@Model.Brand" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Model"></label>
+                <input disabled value="@Model.Model" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LicensePlate"></label>
+                <input disabled value="@Model.LicensePlate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Transmission"></label>
+                <input disabled value="@Model.Transmission" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Color"></label>
+                <input asp-for="Color" class="form-control" value="@Model.Color" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FuelType"></label>
+                <input disabled value="@Model.FuelType" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Year"></label>
+                <input disabled value="@Model.Year" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Horsepower"></label>
+                <input asp-for="Horsepower" class="form-control" value="@Model.Horsepower"/>
+                <span asp-validation-for="Horsepower" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineCapacity"></label>
+                <input asp-for="EngineCapacity" class="form-control" value="@Model.EngineCapacity"/>
+                <span asp-validation-for="EngineCapacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kilometer"></label>
+                <input asp-for="Kilometer" class="form-control" value="@Model.Kilometer"/>
+                <span asp-validation-for="Kilometer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Apply</button>
+            </div>
+        </form>
+    </div>
+</div>
